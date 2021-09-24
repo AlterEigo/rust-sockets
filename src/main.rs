@@ -26,6 +26,12 @@ fn run_as_client(args: Vec<String>) {
         args.get(0).unwrap(),
         args.get(1).unwrap()
     );
+    let addr = format!("{}:{}", addr, port);
+    let mut stream = TcpStream::connect(addr).unwrap();
+
+    let greeting = b"client echo";
+    stream.write(greeting).unwrap();
+    loop {}
 }
 
 fn run_as_server(args: Vec<String>) {
