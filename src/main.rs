@@ -9,8 +9,8 @@ fn main() {
 
     if let Some(arg) = args.get(1) {
         match arg.as_str() {
-            "serve" => run_as_server(args),
-            "connect" => run_as_client(args),
+            "serve" => run_as_server(args.as_slice()[2..].to_vec()),
+            "connect" => run_as_client(args.as_slice()[2..].to_vec()),
             _ => ()
         }
     }
